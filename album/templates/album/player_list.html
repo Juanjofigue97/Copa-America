@@ -1,0 +1,9 @@
+<h2>Players</h2>
+{% for c in object_list %}
+    {{ c.first_name }} {{ c.last_name }} | {{ c.team }} <br>
+    
+    {% load static %}
+    <img src="{% static c.photo %}" alt="{{ c.first_name }}">
+    <br>
+
+{% endfor %}
