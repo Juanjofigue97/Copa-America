@@ -3,6 +3,10 @@
 {% load static %}
 
 {% block section %}
+<h2>Player</h2>
+{% endblock section %}
+
+{% block maincontent %}
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
@@ -11,26 +15,16 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">{{ object.first_name }} {{ object.last_name }}</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+          <p class="card-text">
+                Equipo: <a href="{% url "team-detail" object.team_id %}">
+                    {{ object.team }}
+                  </a> <br>
+                Altura: {{ object.height }} <br>
+                Peso: {{ object.weight }} <br>
+                <strong>Comentario: </strong>{{ object.comment|default:"no comments" }}</p>
+          </p>
         </div>
       </div>
     </div>
   </div>
-   <h2>
-       {{ object.first_name }} {{ object.last_name }}
-         ( <a href="{% url "team-detail" object.team_id %}">
-             {{ object.team }}
-           </a> )
-    </h2>
-    <p><strong>comments: </strong>{{ object.comment|default:"no comments" }}</p>
-   <hr>
-{% endblock section %}
-
-{% block maincontent %}
-<div>
- <div>
-     <img src="{% static object.photo.url %}" style="width:250px;height:330px" />
- </div>
-</div>
 {% endblock maincontent %} 
