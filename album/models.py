@@ -12,10 +12,11 @@ class Team(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('team_list')
+        return reverse('team-list')
 
     def __str__(self):
         return self.name
+
 
 class Player(models.Model):
     """ futbolista """
@@ -27,9 +28,21 @@ class Player(models.Model):
     height = models.DecimalField(max_digits=3, decimal_places=2)
     weight = models.IntegerField()
     comment = models.CharField(max_length=200, blank=True)
-    
+
     def get_absolute_url(self):
         return reverse('player-list')
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+@receiver(post_delete, sender=Team) 
+def selection_delete(sender, instance, **kwargs):
+     """ Borra los ficheros de las fotos que se eliminan. """
+     instance.shield.delete(False)
+     instance.team.delete(False)
+
+
+@receiver(post_delete, sender=Player)
+def player_delete(sender, instance, **kwargs):
+     """ Borra los ficheros de las fotos que se eliminan. """
+     instance.photo.delete(False)

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy 
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from album.models import Team, Player
+from django.http import HttpResponse
 
 # Create your views here.
 class TeamListView(ListView):
@@ -39,3 +40,7 @@ class PlayerCreate(CreateView):
 class PlayerDelete(DeleteView):
     model = Player
     success_url = reverse_lazy('player-list')
+
+def OrderByHeight(request):
+    players = Player.objects.all().order_by('-height')
+    return render(request, 'album/playerByHeight.html', {'players': players})

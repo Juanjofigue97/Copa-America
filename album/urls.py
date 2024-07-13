@@ -8,7 +8,8 @@ from .views import (
     TeamCreate,
     TeamDetailView,
     TeamUpdate,
-    TeamDelete)
+    TeamDelete,
+    OrderByHeight)
 
 urlpatterns = [
     path('',PlayerListView.as_view(), name='player-list'),
@@ -16,6 +17,7 @@ urlpatterns = [
     path('player/<int:pk>/detail/', PlayerDetailView.as_view(), name='player-detail'),
     path('player/<int:pk>/update/',PlayerUpdate.as_view(),name='player-update'), 
     path('player/<int:pk>/delete/', PlayerDelete.as_view(), name='player-delete'),
+    path('playerByHeight/', OrderByHeight, name='playerByHeight'),
 
     path('team/create/', TeamCreate.as_view(), name='team-create'),
     path('team/<int:pk>/detail/', TeamDetailView.as_view(), name='team-detail'),

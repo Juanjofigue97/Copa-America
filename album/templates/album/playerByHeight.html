@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block section %}
+<h2>All players by height</h2> 
+{% endblock section %}
+
+{% block maincontent %}
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                {% comment %} <th scope="col">#</th> {% endcomment %}
+                <th scope="col">Foto</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Team</th>
+                <th scope="col">Height</th>
+                {% comment %} <th scope="col">-</th></th> {% endcomment %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in players %}
+          <tr>
+            <td><img src="{% static c.photo %}" alt="{{ c.first_name }}" class="card-img-top img-thumbnail" style="height: 250px; width: 250px;"></td>
+            <td>
+              <a href="{% url "player-detail" c.id %}">
+                {{ c.first_name }} {{ c.last_name }}
+              </a>
+            </td>
+            <td>
+              <a href="{% url "team-detail" c.team.id %}">
+                {{ c.team.name }}
+              </a>
+            </td>
+            <td>{{ c.height }}</td>
+            {% comment %} <td><a href="{% url 'player-detail' c.id %}" class="btn btn-primary">Ver Jugador</a></td> {% endcomment %}
+            {% endfor %}
+          </tr>
+        </tbody>
+      </table>
+</div>
+{% endblock maincontent %}

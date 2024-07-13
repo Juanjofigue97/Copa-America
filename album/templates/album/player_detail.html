@@ -16,12 +16,12 @@
         <div class="card-body">
           <h5 class="card-title">{{ object.first_name }} {{ object.last_name }}</h5>
           <p class="card-text">
-                Equipo: <a href="{% url "team-detail" object.team_id %}">
+                Team: <a href="{% url "team-detail" object.team_id %}">
                     {{ object.team }}
                   </a> <br>
-                Altura: {{ object.height }} <br>
-                Peso: {{ object.weight }} <br>
-                <strong>Comentario: </strong>{{ object.comment|default:"no comments" }}</p>
+                Heigth: {{ object.height }} <br>
+                Weight: {{ object.weight }} <br>
+                <strong>Comments: </strong>{{ object.comment|default:"no comments" }}</p>
                 <a href="{% url "player-update" object.id %}">edit</a>
                 <a href="{% url "player-delete" object.id %}">delete</a>
           </p>

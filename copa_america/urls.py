@@ -19,7 +19,7 @@ from django.urls import path, include
 from album import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='administrador'),
     path('',views.TeamListView.as_view(), name='team-list'),
     path('album/',include("album.urls"))
 ]
