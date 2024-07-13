@@ -15,3 +15,15 @@ class PlayerListView(ListView):
 
 class PlayerDetailView(DetailView):
     model = Player
+
+class PlayerUpdate(UpdateView):
+    model = Player
+    fields = '__all__' 
+
+class PlayerCreate(CreateView):
+    model = Player
+    fields = '__all__'
+
+class PlayerDelete(DeleteView):
+    model = Player
+    success_url = reverse_lazy('player-list')

@@ -22,6 +22,8 @@
                 Altura: {{ object.height }} <br>
                 Peso: {{ object.weight }} <br>
                 <strong>Comentario: </strong>{{ object.comment|default:"no comments" }}</p>
+                <a href="{% url "player-update" object.id %}">edit</a>
+                <a href="{% url "player-delete" object.id %}">delete</a>
           </p>
         </div>
       </div>
