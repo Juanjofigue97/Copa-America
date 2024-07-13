@@ -1,9 +1,25 @@
-<h2>Players</h2>
-{% for c in object_list %}
-    {{ c.first_name }} {{ c.last_name }} | {{ c.team }} <br>
-    
-    {% load static %}
-    <img src="{% static c.photo %}" alt="{{ c.first_name }}">
-    <br>
+{% extends 'base.html' %}
+{% load static %}
 
-{% endfor %}
+
+{% block section %}
+<h2>All players</h2> 
+{% endblock section %}
+
+{% block maincontent %}
+<div class="row">
+    {% for c in object_list %}
+    <div class="col-sm-6">
+        <div class="mt-2">
+                <div class="card mt-2" style="width: 18rem;">
+                    <img src="{% static c.photo %}" alt="{{ c.first_name }}" class="card-img-top img-thumbnail" style="height: 250px;">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ c.first_name }} </h5>
+                      <a href="{% url 'player-detail' c.id %}" class="btn btn-primary">Ver Jugador</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock maincontent %}
