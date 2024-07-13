@@ -37,12 +37,12 @@ class Player(models.Model):
 
 @receiver(post_delete, sender=Team) 
 def selection_delete(sender, instance, **kwargs):
-     """ Borra los ficheros de las fotos que se eliminan. """
-     instance.shield.delete(False)
-     instance.team.delete(False)
+    """ Borra los ficheros de las fotos que se eliminan. """
+    instance.shield.delete(False)
+    instance.team.delete(False)
 
 
 @receiver(post_delete, sender=Player)
 def player_delete(sender, instance, **kwargs):
-     """ Borra los ficheros de las fotos que se eliminan. """
-     instance.photo.delete(False)
+    """ Borra los ficheros de las fotos que se eliminan. """
+    instance.photo.delete(False)
