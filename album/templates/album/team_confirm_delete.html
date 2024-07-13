@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% block maincontent %}
+{% if object.get_players.all == 0 %}
+ <form action=""method="post">{% csrf_token %}
+     <p>Delete "{{ object.name }}"?</p>
+     <input type="submit" value="Confirm" />
+     <a class='btn'href="{% url 'player-list' %}">Cancel</a>
+ </form>
+{% else %}
+<h1>Alerta!</h1>
+<h2 class="text-danger"> El Equipo tiene Jugadores Creados</h2>
+<a class='btn btn-warning' href="{% url 'team-detail' object.pk %}">{{ object.name }}</a>
+{% endif %}
+
+{% endblock maincontent %}

@@ -7,6 +7,20 @@
 
 {% block maincontent %}
 <div class="row">
+    <div class="col-3" >
+        <img src="{% static object.shield.url %}" alt="{{ object.name }}" class="card-img-top img-thumbnail" style="height: 250px;width: 220px; ">
+    </div>
+    <div class="col-6" >
+        <img src="{% static object.team.url %}" alt="{{ object.name }}" class="card-img-top img-thumbnail" style="height: 250px;">
+    </div>
+    <div class="col-3" >
+        <a href="{% url 'team-update' object.id %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'team-delete' object.id %}" class="btn btn-primary">Delete</a>
+    </div>
+</div>
+<br>
+<h3>Jugadores</h3>
+<div class="row">
    {% for p in object.get_players.all %}
    <div class="col-3">
        <div class="mt-2">
