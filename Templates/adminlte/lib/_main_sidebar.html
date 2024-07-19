@@ -14,65 +14,69 @@
         <!-- Sidebar user panel -->
         {% block user_panel %}
         <!-- Sidebar user panel (optional) -->
-      {% comment %} <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="{% avatar_url size=90 %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{% firstof request.user.get_full_name request.user.username %}</a>
         </div>
-      </div> {% endcomment %}
+      </div>
         {% endblock %}
 
         {% block form %}{% endblock %}
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         {% block nav_links_ul %}
-        <nav class="mt-2 p-2">
+        <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             {% block nav_links_outer %}
             <li class="nav-header">{% block nav_heading %}MENU{% endblock %}</li>
 
             {% block nav_links %}
-            <li>
-                <a href="{% url "team-list" %}">
-                    <i class="fa fa-users"></i> <span>Team</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{% url "team-create" %}">
-                            <i class="fa fa-address-card"></i> Create Team
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url "team-list" %}">
-                            <i class="fa fa-list"></i> List of Team
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{% url "player-list" %}">
-                    <i class="fa fa-user"></i> <span>Player</span>
-                </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href="{% url "player-create" %}">
-                            <i class="fa fa-address-card"></i> Create Player
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url "player-list" %}">
-                            <i class="fa fa-list"></i> List of Player
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="{% url "playerByHeight" %}">
-                    <i class="fa fa-list"></i> <span>List of Player by Height</span>
-                </a>
-            </li>
+                <li class="nav-item has-tree-view">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fa-solid fa-people-group"></i> <p>Team</p>
+                        <p><i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                            <li class="nav-item">
+                                    <a href="{% url "team-create" %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-plus"></i> Create Team
+                                    </a>
+                                </li>
+                        <li class="nav-item">
+                            <a href="{% url "team-list" %}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-list-ol"></i> List of Team
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-tree-view">
+                    <a href="{% url "player-list" %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-user"></i> <p>Player</p>
+                        <p><i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                            <li class="nav-item">
+                                    <a href="{% url "player-create" %}" class="nav-link">
+                                        <i class="nav-icon fa-solid fa-plus"></i> Create Player
+                                    </a>
+                                </li>
+                        <li class="nav-item">
+                            <a href="{% url "player-list" %}" class="nav-link">
+                                <i class="nav-icon fa-solid fa-list-ol"></i> List of Player
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url "playerByHeight" %}" class="nav-link">
+                        <i class="nav-icon fa-solid fa-table-list"></i>  Player by Height
+                    </a>
+                </li>
             {% endblock nav_links %}
             {% endblock nav_links_outer %}
             </ul>

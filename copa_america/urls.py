@@ -21,5 +21,6 @@ from album import views
 urlpatterns = [
     path('admin/', admin.site.urls, name='administrador'),
     path('',views.TeamListView.as_view(), name='team-list'),
-    path('album/',include("album.urls"))
+    path("api/", include("apis.urls")),
+    path('album/',include("album.urls")),
 ]
